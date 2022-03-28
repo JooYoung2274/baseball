@@ -14,12 +14,14 @@ const randomNum = () => {
 //세자리수 입력 (게임 시작)
 const gamePlay = (input, randomArray) => {
   if (randomArray.join("") === input) {
-    console.log("3 스트라이크 \n\n3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    return false;
   } else {
     inputCheck(input, randomArray);
+    return true;
   }
 };
 
+//스트라이크, 볼, 낫싱
 const inputCheck = (input, randomArray) => {
   const inputArray = inputNum(input);
   let strike = 0;
@@ -32,7 +34,10 @@ const inputCheck = (input, randomArray) => {
       ball++;
     }
   }
-  console.log(`${strike} 스트라이크, ${ball} 볼 \n`);
+  if (!strike && !ball) {
+    return console.log("낫싱");
+  }
+  return console.log(`${strike} 스트라이크, ${ball} 볼 \n`);
 };
 
 // input값 숫자로 변경 후 배열로 리턴
@@ -41,7 +46,17 @@ const inputNum = (input) => {
   return inputArray;
 };
 
+// 다시시작 or 종료
+const gameRestart = (input) => {
+  if (input === "1") {
+    return true;
+  } else if (input === "2") {
+    return false;
+  }
+};
+
 module.exports = {
   gamePlay,
+  gameRestart,
   randomNum,
 };
