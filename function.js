@@ -3,10 +3,7 @@ const randomNum = () => {
   let array = [];
   while (array.length < 3) {
     let num = Math.floor((Math.random() + 0.1) * 9);
-
-    if (!array.includes(num)) {
-      array.push(num);
-    }
+    !array.includes(num) ? array.push(num) : "";
   }
   return array;
 };
