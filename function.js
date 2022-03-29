@@ -43,11 +43,7 @@ const inputNum = (input) => {
 
 // 다시시작 or 종료
 const gameRestart = (input) => {
-  if (input === "1") {
-    return true;
-  } else if (input === "2") {
-    return false;
-  }
+  return input === "1" ? true : input === "2" ? false : "";
 };
 
 module.exports = {
